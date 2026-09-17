@@ -1,0 +1,620 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root {
+    /* Fonts */
+    --font: 'Inter', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Surfaces & backgrounds */
+    --bg: #F7F8FC;
+    --bg-soft: #eef2fb;
+    --bg-alt: #EEF1FA;
+    --card: #ffffff;
+    --surface: #FFFFFF;
+    --glass: rgba(255, 255, 255, 0.62);
+    --glass-border: rgba(255, 255, 255, 0.8);
+
+    /* Borders */
+    --border: rgba(20, 22, 43, 0.08);
+
+    /* Text (legacy names — used by dashboard/login/register/footer/recent-history) */
+    --text: #0f172a;
+    --text2: #55617a;
+    --text3: #94a1b8;
+
+    /* Text (current system — used by redesigned pages) */
+    --ink: #14162B;
+    --ink-soft: #565A73;
+    --ink-faint: #9295AC;
+
+    /* Brand */
+    --accent: #06B6D4;
+    --accent-dark: #1739a6;
+    --accent-light: #eaf0ff;
+    --accent-warm: #F59E0B;
+    --primary: #4338CA;
+    --primary-2: #7C3AED;
+
+    /* Status colors (legacy flat names) */
+    --green: #10b981;
+    --green-bg: #e9f9f3;
+    --red: #ef4444;
+    --red-bg: #feecec;
+    --yellow: #f59e0b;
+    --yellow-bg: #fef6e7;
+    --blue: #3b82f6;
+    --blue-bg: #e9f0ff;
+
+    /* Status colors */
+    --success: var(--green);
+    --success-bg: var(--green-bg);
+    --danger: var(--red);
+    --danger-bg: var(--red-bg);
+    --warning: var(--yellow);
+    --warning-bg: var(--yellow-bg);
+    --info: var(--blue);
+    --info-bg: var(--blue-bg);
+    --neutral-bg: #F3F4F8;
+
+    /* Gradients */
+    --gradient-brand: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 55%, var(--accent) 100%);
+    --gradient-text: linear-gradient(100deg, var(--primary) 0%, var(--primary-2) 55%, var(--accent) 100%);
+
+    /* Radius */
+    --radius: 16px;
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 26px;
+    --radius-xl: 34px;
+
+    /* Shadow  */
+    --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.05);
+    --shadow-sm: 0 2px 8px rgba(20, 22, 43, 0.05);
+    --shadow-md: 0 12px 32px rgba(20, 22, 43, 0.08);
+    --shadow-lg: 0 24px 60px rgba(20, 22, 43, 0.12);
+    --shadow-glow: 0 20px 50px rgba(67, 56, 202, 0.25);
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -------------------------------------------------------------------------
+   2. Reset & base elements
+   ------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+}
+
+/* Default page container. Pages that need a different max-width/padding*/
+main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   3. Typography helpers
+   ------------------------------------------------------------------------- */
+.text-muted {
+    color: var(--text3);
+}
+
+.text-sm {
+    font-size: 0.85rem;
+}
+
+.section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-alt);
+    color: var(--primary);
+    padding: 0.4rem 0.95rem;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+    border: 1px solid var(--border);
+}
+
+.gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-head p {
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   4. Layout helpers
+   ------------------------------------------------------------------------- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .grid-2,
+    .grid-3,
+    .nav-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   5. Buttons
+   ------------------------------------------------------------------------- */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 100px;
+    padding: 0.6rem 1.7rem;
+    border: none;
+    overflow: hidden;
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    isolation: isolate;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.45) 40%, transparent 60%);
+    background-size: 250% 100%;
+    background-position: 150% 0;
+    transition: background-position 0.7s var(--ease);
+}
+
+.btn:hover::after {
+    background-position: -50% 0;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.btn-primary {
+    background: var(--gradient-brand);
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 26px 60px rgba(67, 56, 202, 0.35);
+}
+
+.btn-outline {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.btn.back {
+    flex-shrink: 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+/* -------------------------------------------------------------------------
+   6. Cards
+   ------------------------------------------------------------------------- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-sm {
+    padding: 1.5rem 1.6rem;
+}
+
+/* -------------------------------------------------------------------------
+   7. Forms
+   ------------------------------------------------------------------------- */
+.form-group {
+    margin-bottom: 1.4rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    transition: border-color 0.2s ease;
+    outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-textarea {
+    resize: vertical;
+    line-height: 1.6;
+    min-height: 180px;
+}
+
+.form-hint {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-top: 0.4rem;
+}
+
+.form-errors {
+    color: var(--red);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+/* -------------------------------------------------------------------------
+   8. Auth wrapper (shared by login + register)
+   Login and register previously declared this identically except for
+   max-width/margin (360px/5rem vs 420px/3rem) — two conflicting
+   definitions of the same class, so whichever page's CSS loaded last in
+   the browser won for BOTH pages. Unified to one sensible size here; each
+   page's own CSS file no longer redeclares it.
+   ------------------------------------------------------------------------- */
+.auth-wrap {
+    min-height: 60vh;
+    max-width: 400px;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.auth-wrap h1 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+.auth-wrap p.sub {
+    color: var(--text3);
+    margin-bottom: 2rem;
+    font-size: 0.92rem;
+}
+
+.auth-card {
+    text-align: left;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.88rem;
+    color: var(--text2);
+}
+
+.auth-footer a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* -------------------------------------------------------------------------
+   9. Pills & badges
+   Color values use var() with a fallback chain: var(--success, var(--green))
+   means "use --success if this scope defines it (e.g. .result-page does),
+   otherwise fall back to the shared --green token." This lets one
+   definition serve both the legacy pages and the newer redesigned pages
+   without duplicating the whole rule per page.
+   ------------------------------------------------------------------------- */
+.skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: default;
+}
+
+.pill-green { background: var(--success-bg); color: var(--success); }
+.pill-red { background: var(--danger-bg); color: var(--danger); }
+.pill-blue { background: var(--info-bg); color: var(--info); }
+.pill-accent { background: var(--accent-light); color: var(--accent); }
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.badge-green { background: var(--success-bg); color: var(--success); }
+.badge-red { background: var(--danger-bg); color: var(--danger); }
+.badge-yellow { background: var(--warning-bg); color: var(--warning); }
+.badge-blue { background: var(--info-bg); color: var(--info); }
+.badge-accent { background: var(--accent-light); color: var(--accent); }
+
+/* -------------------------------------------------------------------------
+   10. Tabs
+   ------------------------------------------------------------------------- */
+.tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text3);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    font-family: var(--font);
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.tab-btn:hover:not(.active) {
+    color: var(--text2);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* -------------------------------------------------------------------------
+   11. Shared feedback states (error banner / loading / empty state)
+   Structure lives here; each page sets --banner-color/--banner-bg locally
+   if it needs a different tint (see result.css / uploadjd.css /
+   uploadresume.css).
+   ------------------------------------------------------------------------- */
+.error-banner {
+    --banner-color: var(--danger);
+    --banner-bg: var(--danger-bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--banner-bg);
+    border: 1px solid var(--banner-color);
+    color: var(--banner-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.error-banner .close-btn {
+    background: none;
+    border: none;
+    color: var(--banner-color);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.2rem;
+    opacity: 0.75;
+}
+
+.error-banner .close-btn:hover {
+    opacity: 1;
+}
+
+.loading-box {
+    background: var(--info-bg);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: var(--radius-md);
+    text-align: center;
+    padding: 1.1rem;
+}
+
+.loading-spinner {
+    font-size: 1.5rem;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text3);
+}
+
+.empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    font-size: 1.2rem;
+    color: var(--text2);
+    margin-bottom: 0.5rem;
+}
+
+/* -------------------------------------------------------------------------
+   12. Tip cards (used by upload-resume + upload-jd sidebars)
+   ------------------------------------------------------------------------- */
+.tip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.6rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.tip-card + .tip-card {
+    margin-top: 1.1rem;
+}
+
+.tip-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tip-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.75rem;
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+}
+
+.tip-item:last-child {
+    margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------------
+   13. Shared animations
+   ------------------------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}

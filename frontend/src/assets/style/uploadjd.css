@@ -1,0 +1,285 @@
+
+.uploadjd-page {
+    --success: #059669;
+    --success-bg: #ECFDF5;
+    --danger: #DC2626;
+    --danger-bg: #FEF2F2;
+    --info-bg: #EFF6FF;
+    --warning: #D97706;
+
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+    font-family: var(--font-body, inherit);
+    color: var(--ink);
+}
+
+.uploadjd-page * {
+    box-sizing: border-box;
+}
+
+.uploadjd-page h1, .uploadjd-page h4 {
+    font-family: var(--font-display, inherit);
+}
+
+/* --------------------------------- Header --------------------------------- */
+.uploadjd-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.uploadjd-header h1 {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+}
+
+.uploadjd-header p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ------------------------------- Error banner ------------------------------ */
+.error-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--danger-bg);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    color: var(--danger);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.error-banner .close-btn {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.2rem;
+    opacity: 0.75;
+}
+
+.error-banner .close-btn:hover {
+    opacity: 1;
+}
+
+/* --------------------------------- Layout ---------------------------------- */
+.jd-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.9rem 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-sm {
+    padding: 1.5rem 1.6rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem; 
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background: var(--bg, #F7F8FC);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+    font-family: var(--font-body, inherit);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--primary);
+}
+
+.form-textarea {
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-hint {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-top: 0.4rem;
+}
+
+/* ------------------------------- Source label ------------------------------- */
+.source-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--info-bg);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.45rem 0.85rem;
+    border-radius: 5px;
+    margin-bottom: 1.4rem;
+}
+
+/* -------------------------------- Loading state ------------------------------ */
+.loading-box {
+    background: var(--info-bg);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: var(--radius-md);
+    text-align: center;
+    padding: 1.1rem;
+}
+
+.loading-spinner {
+    font-size: 1.5rem;
+    display: inline-block;
+    animation: uploadjd-spin 1s linear infinite;
+}
+
+.loading-text {
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+@keyframes uploadjd-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn.back {
+    flex-shrink: 0;
+}
+
+/* --------------------------------- Tip card --------------------------------- */
+.tip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.6rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.tip-card + .tip-card {
+    margin-top: 1.1rem;
+}
+
+.tip-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tip-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.7rem;
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+}
+
+.tip-item:last-child {
+    margin-bottom: 0;
+}
+
+.tip-item .tip-icon {
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+.tip-item .tip-icon.ok { color: var(--success); }
+.tip-item .tip-icon.warn { color: var(--warning); }
+
+/* ------------------------------- Process steps ------------------------------- */
+.process-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.process-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+}
+
+.process-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gradient-brand, var(--primary));
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ------------------------------------ Responsive -------------------------------- */
+@media (max-width: 900px) {
+    .jd-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .uploadjd-page { padding: 1.75rem 1.25rem 3rem; }
+    .card { padding: 1.5rem 1.35rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+}

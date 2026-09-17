@@ -1,0 +1,178 @@
+
+.upload-page {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+    font-family: var(--font-body);
+    color: var(--ink);
+}
+
+.upload-page h1, .upload-page h4 {
+    font-family: var(--font-display);
+}
+
+/* --------------------------------- Header --------------------------------- */
+.upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.upload-header h1 {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+}
+
+.upload-header p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* --------------------------------- Layout ---------------------------------- */
+.upload-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+/* -------------------------------- File dropzone ----------------------------- */
+/* Unique to this page — no other page uploads a file, so this stays here
+   rather than in main.css. */
+.file-drop {
+    position: relative;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    background: var(--bg);
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.file-drop:hover {
+    border-color: var(--primary);
+    background: var(--info-bg);
+}
+
+.file-drop input[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-drop-icon {
+    font-size: 2.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.file-drop-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+    word-break: break-word;
+}
+
+.file-drop-sub {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+}
+
+.file-name-display {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--success);
+}
+
+.file-drop.file-selected {
+    border-style: solid;
+    border-color: var(--success);
+    background: var(--success-bg);
+}
+
+/* -------------------------------- Info banner ------------------------------- */
+.info-banner {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    background: var(--info-bg);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.15rem;
+    margin: 1.4rem 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+}
+
+.info-banner strong {
+    color: var(--primary);
+}
+
+/* This page's tip list uses a plain checkmark bullet via ::before, unlike
+   the upload-jd page which uses explicit icon spans — kept here since it's
+   the only page using this variant. */
+.tip-item::before {
+    content: "✓";
+    color: var(--success);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* ------------------------------ Scoring breakdown ---------------------------- */
+.score-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+}
+
+.score-row:last-of-type {
+    border-bottom: none;
+}
+
+.score-row .score-name {
+    flex: 1;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.score-row .score-pct {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 34px;
+    text-align: right;
+}
+
+.score-footnote {
+    margin-top: 1.1rem;
+    padding-top: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    line-height: 1.6;
+}
+
+/* ------------------------------------ Responsive -------------------------------- */
+@media (max-width: 900px) {
+    .upload-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .upload-page { padding: 1.75rem 1.25rem 3rem; }
+}

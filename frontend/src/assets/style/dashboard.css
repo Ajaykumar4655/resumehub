@@ -1,0 +1,203 @@
+
+.dash-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dash-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+}
+
+.dash-header p {
+    color: var(--text2);
+}
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 2rem;
+}
+
+.stat-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.stat-card-top span.icon {
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+.stat-card-label {
+    font-size: 0.92rem;
+    color: var(--text2);
+    font-weight: 600;
+}
+
+.stat-big {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-sub {
+    font-size: 0.82rem;
+    color: var(--green);
+    font-weight: 600;
+}
+
+.stat-sub.neutral {
+    color: var(--text3);
+}
+
+.progress-track {
+    height: 8px;
+    background: var(--bg-soft);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 0.75rem;
+}
+
+.progress-track .fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+}
+
+.insight-panel h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+}
+
+.insight-sub {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 1rem 0 0.6rem;
+}
+
+.pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.insight-tip {
+    font-size: 0.82rem;
+    color: var(--text3);
+    line-height: 1.6;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+
+.insight-empty {
+    font-size: 0.85rem;
+    color: var(--text3);
+    padding: 0.5rem 0;
+}
+
+.recent-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.recent-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.recent-card-header h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.recent-card-header a {
+    color: var(--accent);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.recent-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+}
+
+.recent-row:hover {
+    background: var(--bg);
+}
+
+.recent-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.recent-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.recent-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.recent-sub {
+    font-size: 0.8rem;
+    color: var(--text3);
+    margin-top: 0.15rem;
+}
+
+.recent-score {
+    text-align: right;
+}
+
+.recent-score .val {
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.recent-chevron {
+    color: var(--text3);
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+    .dash-grid {
+        grid-template-columns: 1fr;
+    }
+}

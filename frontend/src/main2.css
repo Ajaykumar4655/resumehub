@@ -1,0 +1,186 @@
+
+Resumeiq theme · CSS
+/* =========================================================
+   ResumeIQ — Global Animated Theme
+   Purple/Indigo/Blue brand gradient applied everywhere
+   ========================================================= */
+ 
+/* 1. FULL PAGE ANIMATED GRADIENT BACKGROUND
+   Apply this to <body> or your root app wrapper (e.g. #root / .app) */
+body,
+.app-background {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(-45deg, #eef2ff, #e0e7ff, #ede9fe, #dbeafe);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+ 
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+ 
+/* Optional: floating blurred blobs for extra depth behind content
+   Add this as a fixed, absolutely-positioned div inside body,
+   e.g. <div class="bg-blobs"><span></span><span></span><span></span></div> */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+ 
+.bg-blobs span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: floatBlob 18s ease-in-out infinite;
+}
+ 
+.bg-blobs span:nth-child(1) {
+  width: 400px; height: 400px;
+  background: #8b5cf6; /* purple */
+  top: -100px; left: -100px;
+  animation-duration: 20s;
+}
+ 
+.bg-blobs span:nth-child(2) {
+  width: 350px; height: 350px;
+  background: #3b82f6; /* blue */
+  bottom: -80px; right: -60px;
+  animation-duration: 24s;
+  animation-delay: 3s;
+}
+ 
+.bg-blobs span:nth-child(3) {
+  width: 300px; height: 300px;
+  background: #6366f1; /* indigo */
+  top: 40%; left: 60%;
+  animation-duration: 22s;
+  animation-delay: 6s;
+}
+ 
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.1); }
+  66% { transform: translate(-30px, 40px) scale(0.95); }
+}
+ 
+/* =========================================================
+   2. LOGIN / REGISTER CARD — glassmorphism look
+   Apply .auth-card to the white box wrapping the form
+   ========================================================= */
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 90px); /* minus navbar height */
+  padding: 40px 20px;
+}
+ 
+.auth-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 20px 45px rgba(99, 102, 241, 0.18);
+  animation: cardRise 0.6s ease-out;
+}
+ 
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+.auth-card input {
+  border: 1px solid #e0e0f5;
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+ 
+.auth-card input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  outline: none;
+}
+ 
+.auth-card button[type="submit"],
+.auth-card .primary-btn {
+  background: linear-gradient(90deg, #7c3aed, #4f46e5, #3b82f6);
+  background-size: 200% auto;
+  transition: background-position 0.4s ease, transform 0.15s ease;
+}
+ 
+.auth-card button[type="submit"]:hover,
+.auth-card .primary-btn:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+}
+ 
+/* =========================================================
+   3. DASHBOARD — themed cards instead of flat white
+   ========================================================= */
+.dashboard-page {
+  min-height: calc(100vh - 90px);
+  padding: 40px;
+}
+ 
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  border: 1px solid rgba(124, 58, 237, 0.08);
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+ 
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(79, 70, 229, 0.16);
+}
+ 
+/* Analysis list row hover */
+.analysis-row {
+  transition: background 0.2s ease;
+  border-radius: 12px;
+}
+ 
+.analysis-row:hover {
+  background: rgba(124, 58, 237, 0.05);
+}
+ 
+/* Match score badges — subtle pulse for attention */
+.match-score-low {
+  color: #dc2626;
+  animation: pulseSoft 2s ease-in-out infinite;
+}
+ 
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+ 
+/* =========================================================
+   4. Navbar buttons — subtle animated gradient (matches Register btn)
+   ========================================================= */
+.btn-gradient {
+  background: linear-gradient(90deg, #7c3aed, #4f46e5, #3b82f6);
+  background-size: 200% auto;
+  color: #fff;
+  border: none;
+  transition: background-position 0.4s ease, transform 0.15s ease;
+}
+ 
+.btn-gradient:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+}
+ 

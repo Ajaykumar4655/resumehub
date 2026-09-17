@@ -1,0 +1,275 @@
+
+.about-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+    font-family: var(--font-body);
+    color: var(--ink);
+}
+
+.about-page h1, .about-page h2, .about-page h3, .about-page h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+}
+
+.about-section {
+    margin: 4.5rem 0;
+}
+
+/* This page's section intros are left-aligned and full-width, unlike the
+   homepage's centered/narrow version of the same class — scoped here so
+   the two don't fight over the same selector. */
+.about-page .section-head {
+    max-width: 1000px;
+    margin: 0 0 2.5rem;
+}
+
+.about-page .section-head h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 0.65rem;
+}
+
+/* -------------------------------- Hero -------------------------------- */
+.about-hero h1 {
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 1.1rem;
+}
+
+.about-lead {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 1000px;
+    margin-bottom: 1.1rem;
+}
+
+/* ----------------------------- Flow timeline --------------------------- */
+.flow-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2.1rem;
+    padding-left: 2.4rem;
+}
+
+.flow-timeline::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+    opacity: 0.25;
+}
+
+.flow-step {
+    position: relative;
+    display: flex;
+    gap: 1.3rem;
+    align-items: flex-start;
+}
+
+.flow-num {
+    position: absolute;
+    left: -2.4rem;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+.flow-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.2rem 1.4rem;
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    transition: box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.flow-content:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.flow-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+}
+
+.flow-content p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ------------------------------ Privacy -------------------------------- */
+.privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.privacy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.privacy-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.privacy-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.privacy-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.privacy-icon.pi-1 { background: linear-gradient(140deg, #4338CA, #6366F1); }
+.privacy-icon.pi-2 { background: linear-gradient(140deg, #DB2777, #EC4899); }
+.privacy-icon.pi-3 { background: linear-gradient(140deg, #0891B2, #06B6D4); }
+
+.privacy-card h4 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.privacy-card p {
+    font-size: 0.87rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.15rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+
+.privacy-note svg {
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* ------------------------------- Terms --------------------------------- */
+.terms-section {
+    scroll-margin-top: 2rem;
+}
+
+.terms-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.terms-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.3rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.terms-item h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.terms-item h4 span.tnum {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 0.85rem;
+}
+
+.terms-item p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ------------------------------ Footnote ------------------------------- */
+.about-footnote {
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    text-align: center;
+}
+
+.about-footnote a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.about-footnote a:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------- Responsive ------------------------------ */
+@media (max-width: 992px) {
+    .privacy-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .about-page { padding: 2.5rem 1.5rem 4rem; }
+    .about-section { margin: 3.5rem 0; }
+    .privacy-grid { grid-template-columns: 1fr; }
+    .flow-timeline { padding-left: 2.1rem; }
+    .flow-num { width: 34px; height: 34px; font-size: 0.85rem; left: -2.1rem; }
+}
+
+@media (max-width: 576px) {
+    .about-hero h1 { font-size: 1.7rem; }
+    .terms-item { padding: 1.1rem 1.2rem; }
+}

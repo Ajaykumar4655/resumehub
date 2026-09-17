@@ -1,0 +1,447 @@
+/* ==========================================================================
+   Resume Templates — Styles
+   This file is ONLY about the resume document itself (.resume-doc and its
+   6 template variants). The builder page chrome around it (steps, tabs,
+   form, mini-preview frame, etc.) lives in resumebuilder.css instead.
+   Imported directly by ResumePreview.jsx, since that's the component that
+   owns this markup.
+
+   Requires: main.css (tokens — --font-display, --font-mono, --shadow-lg,
+   --radius-xl).
+   ========================================================================== */
+
+/* -------------------------- The resume document itself ------------------------ */
+.resume-doc, .resume-a4-page, .resume {
+    width: 794px;
+    height: 1123px;
+    max-height: 1123px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 28px 38px;
+    color: #1a1a1a;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.resume-doc h1, .resume-doc h2, .resume-doc h3, .resume-doc h4 {
+    font-family: var(--font-display);
+}
+
+.resume-doc a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.resume-section {
+    margin-bottom: 1.6rem;
+}
+
+.resume-section:last-child {
+    margin-bottom: 0;
+}
+
+.resume-section-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+}
+
+.resume-entry {
+    margin-bottom: 1rem;
+}
+
+.resume-entry:last-child {
+    margin-bottom: 0;
+}
+
+.resume-entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.resume-entry-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.resume-entry-sub {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.resume-entry-date {
+    font-size: 0.78rem;
+    color: #777;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+}
+
+a.resume-entry-date {
+    color: #555;
+}
+
+.resume-entry-desc {
+    font-size: 0.85rem;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 0.35rem;
+    white-space: pre-line;
+}
+
+.resume-project-tech {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 0.3rem;
+}
+
+.resume-project-tech strong {
+    color: #333;
+}
+
+.resume-empty-hint {
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+}
+
+.contact-sep {
+    margin: 0 0.4em;
+    color: inherit;
+    opacity: 0.6;
+}
+
+/* -------------------------- Core Qualifications bullet list ------------------- */
+.qual-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1.5rem;
+}
+
+.qual-list li {
+    font-size: 0.85rem;
+    color: #333;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.qual-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+
+/* ===========================================================================
+   Template: teal-label (Katie Fonseca style)
+   Left uppercase label column + right content column, for every section.
+   =========================================================================== */
+.template-teal-label .tl-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.template-teal-label .tl-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.template-teal-label .tl-first {
+    color: #0d9488;
+}
+
+.template-teal-label .tl-contact {
+    text-align: right;
+    font-size: 0.78rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.template-teal-label .tl-contact > div {
+    display: block;
+}
+
+.template-teal-label .tl-rule {
+    height: 1px;
+    background: #ddd;
+    margin-bottom: 1.75rem;
+}
+
+.template-teal-label .tl-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.template-teal-label .tl-row:last-child {
+    margin-bottom: 0;
+}
+
+.template-teal-label .tl-label {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #999;
+    line-height: 1.4;
+}
+
+.template-teal-label .qual-list {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ===========================================================================
+   Template: purple-block (David Lee style)
+   Solid top bar + centered purple caps name + dotted rule.
+   =========================================================================== */
+.template-purple-block {
+    padding-top: 0;
+}
+
+.template-purple-block .pb-topbar {
+    height: 8px;
+    background: #7c3aed;
+    margin: 0 -3.25rem 1.5rem;
+}
+
+.template-purple-block .pb-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.template-purple-block .pb-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #7c3aed;
+    text-transform: uppercase;
+}
+
+.template-purple-block .pb-contact {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #333;
+    margin-top: 0.4rem;
+}
+
+.template-purple-block .pb-rule {
+    border-top: 2px dotted #7c3aed;
+    margin-bottom: 1.75rem;
+}
+
+.template-purple-block .resume-section-title {
+    color: #1a1a1a;
+    text-transform: uppercase;
+    border-bottom: 1px dotted #999;
+    padding-bottom: 0.4rem;
+}
+
+/* ===========================================================================
+   Template: classic-centered (Christine Adams style)
+   Centered black caps name, plain rule, two-column qualifications.
+   =========================================================================== */
+.template-classic-centered .cc-header {
+    text-align: center;
+    margin-bottom: 0.6rem;
+}
+
+.template-classic-centered .cc-header h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.template-classic-centered .cc-contact {
+    font-size: 0.78rem;
+    color: #444;
+    margin-top: 0.35rem;
+}
+
+.template-classic-centered .cc-rule {
+    border-top: 1px solid #999;
+    margin: 1rem 0 1.75rem;
+}
+
+.template-classic-centered .resume-section-title {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.35rem;
+}
+
+/* ===========================================================================
+   Template: navy-sidebar (James Stele style)
+   Dark navy sidebar on the right; name + summary + experience on the left.
+   =========================================================================== */
+.template-navy-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 0;
+    padding: 0;
+}
+
+.template-navy-sidebar .ns-main {
+    padding: 2.5rem 2.25rem;
+}
+
+.template-navy-sidebar .ns-main h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 0.2rem;
+}
+
+.template-navy-sidebar .ns-role {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.template-navy-sidebar .resume-section-title {
+    color: #1e3a8a;
+}
+
+.template-navy-sidebar .ns-sidebar {
+    background: #1e3a8a;
+    color: #fff;
+    padding: 2.5rem 1.5rem;
+}
+
+.template-navy-sidebar .ns-sidebar-block {
+    margin-bottom: 1.75rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+.template-navy-sidebar .ns-sidebar-block:last-child {
+    margin-bottom: 0;
+}
+
+.template-navy-sidebar .ns-sidebar-block .resume-section-title {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.template-navy-sidebar .ns-sidebar .qual-list {
+    grid-template-columns: 1fr;
+}
+
+.template-navy-sidebar .ns-sidebar .qual-list li,
+.template-navy-sidebar .ns-sidebar .resume-entry-title,
+.template-navy-sidebar .ns-sidebar .resume-entry-sub {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.template-navy-sidebar .ns-sidebar .resume-entry-date {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* ===========================================================================
+   Template: bold-teal (James Conlan style)
+   Very large black bold name, teal rule, gray contact line.
+   =========================================================================== */
+.template-bold-teal .bt-header h1 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.template-bold-teal .bt-contact {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.35rem;
+}
+
+.template-bold-teal .bt-rule {
+    height: 3px;
+    background: #0d9488;
+    margin: 1rem 0 1.75rem;
+}
+
+.template-bold-teal .resume-section-title {
+    color: #c2410c;
+    text-transform: uppercase;
+}
+
+/* ===========================================================================
+   Template: navy-double-rule (Gabriella Torres style)
+   Centered navy name, double horizontal rules, centered section titles.
+   =========================================================================== */
+.template-navy-double-rule .nd-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.template-navy-double-rule .nd-header h1 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #1e3a8a;
+}
+
+.template-navy-double-rule .nd-rule-group {
+    margin-bottom: 1.75rem;
+}
+
+.template-navy-double-rule .nd-rule {
+    border-top: 1px solid #1e3a8a;
+}
+
+.template-navy-double-rule .nd-rule + .nd-contact {
+    margin: 0.5rem 0;
+}
+
+.template-navy-double-rule .nd-contact {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #444;
+}
+
+.template-navy-double-rule .resume-section-title {
+    text-align: center;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ------------------------------------ Responsive -------------------------------- */
+@media (max-width: 640px) {
+    .resume-doc { padding: 2rem 1.5rem; }
+    .template-purple-block .pb-topbar { margin: 0 -1.5rem 1.5rem; }
+    .template-navy-sidebar.resume-doc { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------- Print --------------------------------- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .resume-doc, .resume-doc * {
+        visibility: visible;
+    }
+
+    .resume-doc {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+}

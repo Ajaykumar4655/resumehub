@@ -1,0 +1,640 @@
+/* ==========================================================================
+   Resume Builder Page — Styles (builder UI chrome & live preview)
+   ========================================================================== */
+
+.builder-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    font-family: var(--font-body);
+    color: var(--ink);
+}
+
+.builder-page h1, .builder-page h2, .builder-page h3, .builder-page h4 {
+    font-family: var(--font-display);
+}
+
+/* --------------------------------- Header --------------------------------- */
+.builder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.builder-header h1 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 700;
+    margin: 0 0 0.35rem;
+}
+
+.builder-header p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ------------------------------- Step tracker ------------------------------- */
+.builder-steps {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.builder-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink-faint);
+    padding: 0.5rem 1rem 0.5rem 0.6rem;
+    border-radius: 100px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.builder-step:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.builder-step .num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--neutral-bg);
+    color: var(--ink-faint);
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.builder-step.active {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--info-bg, #EFF6FF);
+}
+
+.builder-step.active .num {
+    background: var(--gradient-brand, #2563eb);
+    color: #fff;
+}
+
+.builder-step.done {
+    color: var(--success, #16a34a);
+}
+
+.builder-step.done .num {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.builder-step-sep {
+    width: 18px;
+    height: 1.5px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+/* ------------------------------ Alerts & Badges ----------------------------- */
+.builder-alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md, 8px);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    animation: fadeIn 0.2s ease;
+}
+
+.builder-alert button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.7;
+    padding: 0 4px;
+}
+
+.builder-alert button:hover {
+    opacity: 1;
+}
+
+.builder-alert-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+
+.builder-alert-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #16a34a;
+}
+
+/* ===========================================================================
+   STEP 1 — Template picker
+   =========================================================================== */
+.template-selection-view {
+    margin-bottom: 2rem;
+}
+
+.template-selection-header {
+    margin-bottom: 1.5rem;
+}
+
+.template-selection-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem;
+}
+
+.template-selection-header p {
+    color: var(--ink-soft);
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+.template-loading-state,
+.template-error-state,
+.template-empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 12px);
+    margin-bottom: 2rem;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.template-card {
+    position: relative;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg, 12px);
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+    border-color: var(--primary);
+}
+
+.template-card.selected {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary), var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+    background: #f8fafc;
+}
+
+.template-preview-frame {
+    width: 100%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 6px);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* 1123px * 0.40 scale = ~450px height for full A4 page */
+    min-height: 450px;
+    max-height: 450px;
+    height: 450px;
+    box-sizing: border-box;
+}
+
+.template-img-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.template-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+
+.template-card-footer h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.template-check {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    background: var(--primary, #2563eb);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    z-index: 2;
+}
+
+/* ===========================================================================
+   STEP 2 — Content Form & Live Preview Layout
+   =========================================================================== */
+.builder-content-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.builder-form-card {
+    padding: 0;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: var(--shadow-sm);
+}
+
+.builder-form-card .tabs {
+    padding: 0.5rem 1.25rem 0;
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+}
+
+.tab-btn {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--primary);
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.builder-form-body {
+    padding: 1.5rem;
+}
+
+.form-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    border-top: 1px solid var(--border);
+}
+
+.form-section {
+    animation: fadeIn 0.2s ease;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 0.35rem;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 6px);
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--ink);
+    background: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-hint {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-top: 0.35rem;
+}
+
+.repeatable-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 8px);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+    background: #fcfcfd;
+}
+
+.repeatable-item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+}
+
+.repeatable-item-head span {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: var(--danger, #ef4444);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+}
+
+.remove-item-btn:hover {
+    text-decoration: underline;
+}
+
+.add-item-btn {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius-md, 8px);
+    background: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.87rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-item-btn:hover {
+    border-color: var(--primary);
+    background: var(--info-bg, #EFF6FF);
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+}
+
+.checkbox-row input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.checkbox-row label {
+    cursor: pointer;
+}
+
+.section-toggle {
+    padding: 0.65rem 0.85rem;
+    background: #f1f5f9;
+    border-radius: var(--radius-sm, 6px);
+    margin-bottom: 1.2rem;
+}
+
+/* Skills input */
+.skills-input-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+}
+
+.skills-input-row .form-input {
+    flex: 1;
+}
+
+.skill-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--info-bg, #EFF6FF);
+    color: var(--primary);
+    padding: 0.3rem 0.5rem 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid #bfdbfe;
+}
+
+.skill-tag button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    padding: 0 2px;
+}
+
+.skill-tag button:hover {
+    opacity: 1;
+}
+
+/* ===========================================================================
+   RIGHT COLUMN — Clean Live A4 Preview Pane (No horizontal scroll)
+   =========================================================================== */
+.live-preview-pane {
+    position: sticky;
+    top: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: var(--shadow-sm);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.live-preview-viewport {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 8px);
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.live-preview-bottom-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.btn-block {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+/* ===========================================================================
+   STEP 3 — Full Screen Preview
+   =========================================================================== */
+.full-preview-view {
+    animation: fadeIn 0.2s ease;
+}
+
+.preview-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 8px);
+}
+
+.full-preview-stage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #e2e8f0;
+    border-radius: var(--radius-lg, 12px);
+    padding: 1.5rem 1rem;
+    overflow-x: auto;
+    min-height: calc(1123px + 3rem);
+}
+
+/* ===========================================================================
+   A4 Resume Paper Container Styles (Strictly Single Page 794x1123)
+   =========================================================================== */
+.resume-preview-container {
+    width: 794px;
+    height: 1123px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-a4-page {
+    width: 794px;
+    height: 1123px;
+    max-height: 1123px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    position: relative;
+    color: #1a1a1a;
+    overflow: hidden;
+    
+}
+
+.resume-empty-prompt {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--ink-faint);
+}
+
+/* --------------------------------- Spinners ------------------------------- */
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(37, 99, 235, 0.2);
+    border-top-color: var(--primary, #2563eb);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 0.75rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------------- Responsive ------------------------------ */
+@media (max-width: 1080px) {
+    .template-grid { grid-template-columns: repeat(2, 1fr); }
+    .builder-content-layout { grid-template-columns: 1fr; }
+    .live-preview-pane { position: static; }
+}
+
+@media (max-width: 640px) {
+    .builder-page { padding: 1.5rem 1rem 3rem; }
+    .template-grid { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .builder-steps { overflow-x: auto; }
+}
